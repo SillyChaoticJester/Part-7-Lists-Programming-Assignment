@@ -4,7 +4,15 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            List<int> numbers = new List<int>();
+            Random generator = new Random();
+            string choice = "";
+            bool quit = false;
+
+            for (int i = 0; i < 25; i++)
+            {
+                numbers.Add(generator.Next(10, 21));
+            }
         }
     }
 }
