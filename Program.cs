@@ -63,6 +63,21 @@ namespace Part_7_Lists_Programming_Assignment
                 {
 
                 }
+
+                else if (choice == "5" || choice == "count a number")
+                {
+
+                }
+
+                else if (choice == "6" || choice == "print large number")
+                {
+
+                }
+
+                else if (choice == "7" || choice == "print small number")
+                {
+
+                }
             }
             
         }
