@@ -153,6 +153,13 @@ namespace Part_7_Lists_Programming_Assignment
         public static void StringList()
         {
             List<string> vegetables = new List<string>() {"Carrot", "Beet", "Celery", "Radish", "Cabbage"};
+            string choice;
+            bool done = false;
+
+            while (!done)
+            {
+
+            }
         }
         static void Main(string[] args)
         {
