@@ -69,10 +69,22 @@ namespace Part_7_Lists_Programming_Assignment
 
                 else if (choice == "3" || choice == "remove numbers")
                 {
-                    Console.WriteLine("Which value from the list (1-25) would you like to get rid of?");
+                    Console.WriteLine("Which value from the list (10-20) would you like to get rid of?");
                     while (!Int32.TryParse(Console.ReadLine(), out userRemove))
                             Console.WriteLine("Invalid Integer, please try again:");
-                    numbers.Remove(userRemove - 1);
+                    if (userRemove > 20 || userRemove < 10)
+                    {
+                        Console.WriteLine("That's not a number within the list, please try again:");
+                        while (!Int32.TryParse(Console.ReadLine(), out userRemove)) ;
+                        Console.WriteLine("Invalid Integer, please try again:");
+                    }
+                    for (int i = 0; i < numbers.Count; i++)
+                    {
+                        if (numbers.Contains(userRemove));
+                        {
+                            numbers.Remove(i);
+                        }
+                    }
                     Console.WriteLine("Done!");
                     Console.WriteLine("Press ENTER to continue:");
                     Console.ReadLine();
@@ -156,9 +168,79 @@ namespace Part_7_Lists_Programming_Assignment
             string choice;
             bool done = false;
 
+            Console.WriteLine("Hello and Welcome to the List of Strings!");
+
             while (!done)
             {
+                Console.WriteLine("Here's a List of Vegetables:");
+                Console.WriteLine();
+                Console.WriteLine("Vegetables:");
 
+                for (int i = 0; i < 25; i++)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"{i} - {vegetables[i].ToUpper()}");
+
+                }
+                Console.WriteLine();
+                Console.WriteLine("What would you like to do with it?");
+                Console.WriteLine();
+                Console.WriteLine("1 - Sort List");
+                Console.WriteLine("2 - Remove Vegetable (Index)");
+                Console.WriteLine("3 - Remove Vegetable (Value)");
+                Console.WriteLine("4 - Add Vegetable");
+                Console.WriteLine("5 - Search for Vegetable");
+                Console.WriteLine("6 - Clear List");
+                Console.WriteLine("7 - Quit");
+                choice = Console.ReadLine().ToLower().Trim();
+                Console.WriteLine();
+
+                if (choice == "1" || choice == "sort list")
+                {
+                    vegetables.Sort();
+                    for (int i = 0; i < vegetables.Count; i++)
+                    {
+                        Console.WriteLine();
+                        Console.Write(vegetables[i]);
+                    }
+                    Console.WriteLine("Done!");
+                    Console.WriteLine("Press ENTER to continue:");
+                    Console.ReadLine();
+                }
+
+                else if (choice == "2")
+                {
+                    Console.WriteLine("Which Index would you like to Remove?");
+                    Console.WriteLine("(Hint: It MUST be the number of the Vegetable, and NOT the name itself.)");
+                }
+
+                else if (choice == "3")
+                {
+                    Console.WriteLine("Which Value would you like to Remove?");
+                    Console.WriteLine("(Hint: It MUST be the name of the Vegetable, and NOT the number.)");
+                }
+
+                else if (choice == "4" || choice == "add vegetable")
+                {
+
+                }
+
+                else if (choice == "5" || choice == "search for vegetable")
+                {
+
+                }
+
+                else if (choice == "6" || choice == "clear list")
+                {
+
+                }
+
+                else if (choice == "7" || choice == "quit")
+                {
+                    done = true;
+                    Console.WriteLine("Alright, see ya!");
+                    Console.WriteLine();
+                }
             }
         }
         static void Main(string[] args)
