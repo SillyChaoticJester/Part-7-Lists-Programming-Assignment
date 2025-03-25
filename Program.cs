@@ -23,7 +23,7 @@ namespace Part_7_Lists_Programming_Assignment
                 for (int i = 0; i < 25; i++)
                 {
                     numbers.Add(generator.Next(10, 21));
-                    Console.Write(numbers[i]);
+                    Console.Write(numbers[i] + " ");
                 }
                 Console.WriteLine();
                 Console.WriteLine();
@@ -44,11 +44,12 @@ namespace Part_7_Lists_Programming_Assignment
                 if (choice == "1" || choice == "sort list")
                 {
                     numbers.Sort();
-                    for (int i = 0; i < numbers.Count; i++)
+                    for (int i = 0; i < 25; i++)
                     {
-                        Console.WriteLine();
-                        Console.Write(numbers[i]);
+                        Console.Write(numbers[i] + " ");
                     }
+                    Console.WriteLine();
+                    Console.WriteLine();
                     Console.WriteLine("Done!");
                     Console.WriteLine("Press ENTER to continue:");
                     Console.ReadLine();
@@ -56,12 +57,13 @@ namespace Part_7_Lists_Programming_Assignment
                 
                 else if (choice == "2" || choice == "make new list")
                 {
-                    for (int i = 0; i < numbers.Count; i++)
+                    numbers.Clear();
+                    for (int i = 0; i < 25; i++)
                     {
-                        Console.WriteLine();
                         numbers.Insert(i, generator.Next(10, 21));
-                        Console.Write(numbers[i]);
+                        Console.Write(numbers[i] + " ");
                     }
+                    Console.WriteLine();
                     Console.WriteLine("Done!");
                     Console.WriteLine("Press ENTER to continue:");
                     Console.ReadLine();
@@ -78,7 +80,7 @@ namespace Part_7_Lists_Programming_Assignment
                         while (!Int32.TryParse(Console.ReadLine(), out userRemove)) ;
                         Console.WriteLine("Invalid Integer, please try again:");
                     }
-                    for (int i = 0; i < numbers.Count; i++)
+                    for (int i = 0; i < 25; i++)
                     {
                         if (numbers.Contains(userRemove));
                         {
@@ -94,7 +96,9 @@ namespace Part_7_Lists_Programming_Assignment
                 {
                     Console.WriteLine("What number would you like to add to the list?");
                     while (!Int32.TryParse(Console.ReadLine(), out userAdd));
+                    {
                         Console.WriteLine("Invalid Integer, please try again:");
+                    }
                     numbers.Add(userAdd);
                     Console.WriteLine("Done!");
                     Console.WriteLine("Press ENTER to continue:");
