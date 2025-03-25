@@ -82,7 +82,7 @@ namespace Part_7_Lists_Programming_Assignment
                     {
                         if (numbers.Contains(userRemove));
                         {
-                            numbers.Remove(i);
+                            numbers.Remove(userRemove);
                         }
                     }
                     Console.WriteLine("Done!");
@@ -165,7 +165,8 @@ namespace Part_7_Lists_Programming_Assignment
         public static void StringList()
         {
             List<string> vegetables = new List<string>() {"Carrot", "Beet", "Celery", "Radish", "Cabbage"};
-            string choice;
+            string choice, userSearch, userAdd, valueRemove;
+            int indexRemove, count = 0, searchFound = 0;
             bool done = false;
 
             Console.WriteLine("Hello and Welcome to the List of Strings!");
@@ -212,27 +213,95 @@ namespace Part_7_Lists_Programming_Assignment
                 {
                     Console.WriteLine("Which Index would you like to Remove?");
                     Console.WriteLine("(Hint: It MUST be the number of the Vegetable, and NOT the name itself.)");
+                    Console.WriteLine();
+                    while (!Int32.TryParse(Console.ReadLine(), out indexRemove))
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Invalid Integer. Please Try Again:");
+                    }
+                    while (indexRemove > vegetables.Count || indexRemove < 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Index chosen cannot be less than or greater than the amount that is in the list.");
+                        Console.WriteLine("Please Try Again:");
+                        while (!Int32.TryParse(Console.ReadLine(), out indexRemove))
+                            Console.WriteLine("Invalid Integer. Please Try Again:");
+                    }
+                    vegetables.RemoveAt(indexRemove);
+                    Console.WriteLine();
+                    Console.WriteLine("Done!");
+                    Console.WriteLine("Press ENTER to continue:");
+                    Console.ReadLine();
                 }
 
                 else if (choice == "3")
                 {
                     Console.WriteLine("Which Value would you like to Remove?");
                     Console.WriteLine("(Hint: It MUST be the name of the Vegetable, and NOT the number.)");
+                    valueRemove = Console.ReadLine().ToUpper().Trim();
+                    if (vegetables.Contains(valueRemove))
+                    {
+                        vegetables.Remove(valueRemove);
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("That doesn't exist in the list!");
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("Done!");
+                    Console.WriteLine("Press ENTER to continue:");
+                    Console.ReadLine();
                 }
 
                 else if (choice == "4" || choice == "add vegetable")
                 {
+                    Console.WriteLine("What type of Vegetable would you like to add?");
+                    Console.WriteLine("If you type something that ISN'T a Vegetable... why would you do that?");
+                    userAdd = Console.ReadLine().ToUpper().Trim();
 
+                    vegetables.Add(userAdd);
+
+                    Console.WriteLine();
+                    Console.WriteLine("Done!");
+                    Console.WriteLine("Press ENTER to continue:");
+                    Console.ReadLine();
                 }
 
                 else if (choice == "5" || choice == "search for vegetable")
                 {
+                    Console.WriteLine("What vegetable would you like to count for?");
+                    userSearch = Console.ReadLine().ToUpper().Trim();
 
+                    for (int i = 0; i < vegetables.Count; i++)
+                    {
+                        if (vegetables.Contains(userSearch))
+                        {
+                            count++;
+                            searchFound = i;
+                        }
+                    }
+                    if (count > 0)
+                    {
+                        Console.WriteLine($"There was {count} {userSearch}(s), and its index is {searchFound}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"There wasn't any {userSearch} in the List!");
+                    }
+
+                    Console.WriteLine();
+                    Console.WriteLine("Press ENTER to continue:");
+                    Console.ReadLine();
                 }
 
                 else if (choice == "6" || choice == "clear list")
                 {
-
+                    vegetables.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Done!");
+                    Console.WriteLine("Press ENTER to continue:");
+                    Console.ReadLine();
                 }
 
                 else if (choice == "7" || choice == "quit")
