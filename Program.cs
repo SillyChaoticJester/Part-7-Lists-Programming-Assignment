@@ -9,20 +9,25 @@ namespace Part_7_Lists_Programming_Assignment
             List<int> numbers = new List<int>();
             Random generator = new Random();
             string choice;
-            int sum = 0, userAdd = 0, userCount, userRemove, countAmount = 0;
+            int sum = 0, userAdd, userCount, userRemove, countAmount = 0;
             decimal average = 0M;
             bool done = false;
 
             Console.WriteLine("Hello and Welcome to the List of Integers!");
-            
+
+            for (int i = 0; i < 25; i++)
+            {
+                numbers.Add(generator.Next(10, 21));
+            }
+
             while (!done)
             {
                 Console.WriteLine("Here's your list of Random Integers:");
+
                 Console.WriteLine();
 
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < numbers.Count; i++)
                 {
-                    numbers.Add(generator.Next(10, 21));
                     Console.Write(numbers[i] + " ");
                 }
                 Console.WriteLine();
@@ -95,10 +100,8 @@ namespace Part_7_Lists_Programming_Assignment
                 else if (choice == "4" || choice == "add numbers")
                 {
                     Console.WriteLine("What number would you like to add to the list?");
-                    while (!Int32.TryParse(Console.ReadLine(), out userAdd));
-                    {
-                        Console.WriteLine("Invalid Integer, please try again:");
-                    }
+                    while (!Int32.TryParse(Console.ReadLine(), out userAdd))
+                            Console.WriteLine("Invalid Integer, please try again:");
                     numbers.Add(userAdd);
                     Console.WriteLine("Done!");
                     Console.WriteLine("Press ENTER to continue:");
@@ -109,16 +112,16 @@ namespace Part_7_Lists_Programming_Assignment
                 {
                     Console.WriteLine("What number (from 10-20) would you like to count for?");
                     while (!Int32.TryParse(Console.ReadLine(), out userCount));
-                        Console.WriteLine("Invalid Integer, please try again:");
+                            Console.WriteLine("Invalid Integer, please try again:");
                     if (userCount > 20 || userCount < 10)
                     {
                         Console.WriteLine("That's not a number within the list, please try again:");
-                        while (!Int32.TryParse(Console.ReadLine(), out userCount)) ;
-                            Console.WriteLine("Invalid Integer, please try again:");
+                        while (!Int32.TryParse(Console.ReadLine(), out userCount))
+                                Console.WriteLine("Invalid Integer, please try again:");
                     }
                     for (int i = 0; i < numbers.Count; i++)
                     {
-                        if (numbers.Contains(userAdd));
+                        if (numbers.Contains(userCount));
                         {
                             countAmount++;
                         }
@@ -181,7 +184,7 @@ namespace Part_7_Lists_Programming_Assignment
                 Console.WriteLine();
                 Console.WriteLine("Vegetables:");
 
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < vegetables.Count; i++)
                 {
                     Console.WriteLine();
                     Console.WriteLine($"{i} - {vegetables[i].ToUpper()}");
@@ -208,6 +211,7 @@ namespace Part_7_Lists_Programming_Assignment
                         Console.WriteLine();
                         Console.Write(vegetables[i]);
                     }
+                    Console.WriteLine();
                     Console.WriteLine("Done!");
                     Console.WriteLine("Press ENTER to continue:");
                     Console.ReadLine();
@@ -219,17 +223,15 @@ namespace Part_7_Lists_Programming_Assignment
                     Console.WriteLine("(Hint: It MUST be the number of the Vegetable, and NOT the name itself.)");
                     Console.WriteLine();
                     while (!Int32.TryParse(Console.ReadLine(), out indexRemove))
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Invalid Integer. Please Try Again:");
-                    }
+                            Console.WriteLine();
+                            Console.WriteLine("Invalid Integer. Please Try Again:");
                     while (indexRemove > vegetables.Count || indexRemove < 0)
                     {
                         Console.WriteLine();
                         Console.WriteLine("Index chosen cannot be less than or greater than the amount that is in the list.");
                         Console.WriteLine("Please Try Again:");
                         while (!Int32.TryParse(Console.ReadLine(), out indexRemove))
-                            Console.WriteLine("Invalid Integer. Please Try Again:");
+                                Console.WriteLine("Invalid Integer. Please Try Again:");
                     }
                     vegetables.RemoveAt(indexRemove);
                     Console.WriteLine();
