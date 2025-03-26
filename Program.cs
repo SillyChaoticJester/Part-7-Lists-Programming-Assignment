@@ -171,7 +171,7 @@ namespace Part_7_Lists_Programming_Assignment
         }
         public static void StringList()
         {
-            List<string> vegetables = new List<string>() {"Carrot", "Beet", "Celery", "Radish", "Cabbage"};
+            List<string> vegetables = new List<string>() {"CARROT", "BEET", "CELERY", "RADISH", "CABBAGE"};
             string choice, userSearch, userAdd, valueRemove;
             int indexRemove, count = 0, searchFound = 0;
             bool done = false;
@@ -223,9 +223,8 @@ namespace Part_7_Lists_Programming_Assignment
                     Console.WriteLine("(Hint: It MUST be the number of the Vegetable, and NOT the name itself.)");
                     Console.WriteLine();
                     while (!Int32.TryParse(Console.ReadLine(), out indexRemove))
-                            Console.WriteLine();
-                            Console.WriteLine("Invalid Integer. Please Try Again:");
-                    while (indexRemove > vegetables.Count || indexRemove < 0)
+                        Console.WriteLine("Invalid Integer, please try again:");
+                    if (indexRemove > vegetables.Count || indexRemove < 0)
                     {
                         Console.WriteLine();
                         Console.WriteLine("Index chosen cannot be less than or greater than the amount that is in the list.");
@@ -281,7 +280,7 @@ namespace Part_7_Lists_Programming_Assignment
 
                     for (int i = 0; i < vegetables.Count; i++)
                     {
-                        if (vegetables.Contains(userSearch))
+                        if (vegetables[i].Contains(userSearch))
                         {
                             count++;
                             searchFound = i;
